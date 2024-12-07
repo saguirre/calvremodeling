@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useLayoutEffect, useState } from "react";
 import Logo from "../icons/logo.tsx";
 import useMediaQuery from "../utils/useMediaQuery.ts";
 import { motion } from "framer-motion";
@@ -6,6 +6,18 @@ import { motion } from "framer-motion";
 const Navbar = () => {
   const [toggled, setToggled] = useState(false);
   const matches = useMediaQuery("(min-width: 1280px)");
+
+  // useLayoutEffect runs before browser paint, might handle hydration better
+  const [isClient, setIsClient] = useState(false);
+
+  useLayoutEffect(() => {
+    setIsClient(true);
+  }, []);
+
+  // Return empty div during SSR to match client structure
+  if (!isClient) {
+    return <div className="navbar-container"></div>;
+  }
 
   const linkStyle = "text-xl leading-6 font-jost text-primary-200";
 
