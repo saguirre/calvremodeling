@@ -18,9 +18,9 @@ const Logo = () => {
     //     fill="#CDA274"
     //   />
     // </svg>
-    <div className="flex flex-row items-center justify-start gap-4">
+    <div className="flex flex-row items-center justify-start gap-2 md:gap-4">
       <img src="/logo-calv.svg" alt="Calv Remodeling" className="w-[60px]" />
-      <h2 className="text-[40px] leading-[50px] font-dm font-semibold w-full text-[#484F4F]">CALV Remodeling</h2>
+      <h2 className="text-[24px] leading-[40px] md:text-[40px] md:leading-[50px] font-dm font-semibold w-full text-[#484F4F]">CALV Remodeling</h2>
     </div>
   );
 };
