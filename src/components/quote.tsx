@@ -19,7 +19,7 @@ const QuoteText = ({ text, name }: QuoteProps) => {
         </h4>
         <p className="text-text-gray text-base tracking-tight lg:text-[25px] font-jost lg:leading-[37px] text-center ">
           {" "}
-          {`-${name}`}{" "}
+          {`${name}`}{" "}
         </p>
       </div>
       <RightPattern />

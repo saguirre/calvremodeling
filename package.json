@@ -1,5 +1,5 @@
 {
-  "name": "interior-design-website",
+  "name": "calvremodeling",
   "type": "module",
   "version": "0.0.1",
   "scripts": {
@@ -10,6 +10,7 @@
     "astro": "astro"
   },
   "dependencies": {
+    "@astrojs/cloudflare": "^12.0.1",
     "@astrojs/netlify": "^3.0.2",
     "@astrojs/react": "^3.0.2",
     "@astrojs/tailwind": "^5.0.0",
@@ -22,5 +23,8 @@
     "react-countup": "^6.4.2",
     "react-dom": "^18.2.0",
     "tailwindcss": "^3.3.3"
+  },
+  "devDependencies": {
+    "@cloudflare/workers-types": "^4.20241205.0"
   }
 }

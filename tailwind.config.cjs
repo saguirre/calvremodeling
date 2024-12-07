@@ -1,4 +1,5 @@
 /** @type {import('tailwindcss').Config} */
+import defaultTheme from 'tailwindcss/defaultTheme'
 
 const plugin = require("tailwindcss/plugin");
 
@@ -14,7 +15,7 @@ module.exports = {
         contact: "url('/contactpage-bg.jpg')",
       },
       fontFamily: {
-        dm: ["DM Serif Display", "serif"],
+        dm: ["Open Sans", ...defaultTheme.fontFamily.sans],
         jost: ["Jost", "sans-serif"], // Ensure fonts with spaces have " " surrounding it.
       },
       colors: {
