@@ -8,6 +8,7 @@ const ContactForm = () => {
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setStatus('loading');
+    console.log('')
     
     try {
       const formData = new FormData(e.currentTarget);
