@@ -6,6 +6,7 @@ export interface ButtonProps {
   text: string;
   type?: 'submit' | 'button';
   href?: string;
+  disabled?: boolean;
 }
 
 const Button = (props: ButtonProps) => {
@@ -26,7 +27,7 @@ const Button = (props: ButtonProps) => {
   }
 
   return (
-    <button className={className} type={type}>
+    <button disabled={props.disabled} className={className} type={type}>
       {text}
       {variant === 'primary' ? <ArrowSec /> : <ArrowPri />}
     </button>

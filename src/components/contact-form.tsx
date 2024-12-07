@@ -1,15 +1,15 @@
-import Button from "./button.tsx";
-import { useState } from "react";
+import Button from './button.tsx';
+import { useState } from 'react';
 
 const ContactForm = () => {
   const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
-  const [errorMessage, setErrorMessage] = useState('');
+  const [message, setMessage] = useState('');
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    console.log('Form submitted');
     e.preventDefault();
     setStatus('loading');
-    console.log('')
-    
+
     try {
       const formData = new FormData(e.currentTarget);
       const response = await fetch('/api/submit-form', {
@@ -21,14 +21,20 @@ const ContactForm = () => {
 
       if (data.success) {
         setStatus('success');
+        setMessage('Thank you for your message. We will get back to you soon!');
         (e.target as HTMLFormElement).reset();
       } else {
         setStatus('error');
-        setErrorMessage(data.error || 'Failed to send message');
+        setMessage(data.error || 'Failed to send message. Please try again.');
       }
     } catch (error) {
       setStatus('error');
-      setErrorMessage('Failed to send message. Please try again.');
+      setMessage('Failed to send message. Please try again later.');
+    } finally {
+      setTimeout(() => {
+        setStatus('idle');
+        setMessage('');
+      }, 5000);
     }
   };
 
@@ -76,15 +82,10 @@ const ContactForm = () => {
         ></textarea>
 
         <div className="w-full flex justify-end col-span-2 items-center gap-4">
-          {status === 'success' && (
-            <p className="text-green-600">Message sent successfully!</p>
-          )}
-          {status === 'error' && (
-            <p className="text-red-600">{errorMessage}</p>
-          )}
-          <Button 
-            text={status === 'loading' ? "Sending..." : "Submit"} 
-            type="submit" 
+          {message && <p className={`text-${status === 'success' ? 'green' : 'red'}-600`}>{message}</p>}
+          <Button
+            text={status === 'loading' ? 'Sending...' : 'Send Message'}
+            type="submit"
             disabled={status === 'loading'}
           />
         </div>

@@ -1,5 +1,6 @@
 export const onRequestPost: PagesFunction = async (context) => {
   try {
+    console.log('Request received:',);
     const formData = await context.request.formData();
 
     const name = formData.get('name')?.toString();
